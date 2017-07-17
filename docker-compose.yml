@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  apache:
+    build: './docker/apache'
+    ports:
+      - '80:80'
+    volumes:
+      - .:/var/www/html:ro
+    links:
+      - php
+  php:
+    build: './docker/php'
+    volumes:
+      - .:/var/www/html
+    expose:
+       - 9000
+
